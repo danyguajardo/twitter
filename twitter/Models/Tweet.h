@@ -5,6 +5,8 @@
 #import "User.h"
 @interface Tweet : NSObject
 
+@property (strong, nonatomic) Tweet *tweet;
+
 // MARK: Properties
 @property (nonatomic, strong) NSString *idStr; // For favoriting, retweeting & replying
 @property (strong, nonatomic) NSString *text; // Text content of tweet
@@ -15,7 +17,11 @@
 @property (strong, nonatomic) User *user; // Contains name, screenname, etc. of tweet author
 @property (strong, nonatomic) NSString *createdAtString; // Display date
 
+
 // For Retweets
 @property (strong, nonatomic) User *retweetedByUser;  // user who retweeted if tweet is retweet
+
++ (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries; //declaring method in order to import in APIManager
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

@@ -10,14 +10,13 @@
 
 @implementation User
 
-//this is where the individual, personal characteristics of each user are declared
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
-    if (self) {
-        self.name = dictionary[@"name"];
-        self.screenName = dictionary[@"screen_name"];
-        // Initialize any other properties
-    }
-    return self;
+    self.name = dictionary[@"name"];
+    self.screenName = dictionary[@"screen_name"];
+    self.profileURL = [NSURL URLWithString:dictionary[@"profile_image_url_https"]];
+    
+return self;
 }
+
 @end

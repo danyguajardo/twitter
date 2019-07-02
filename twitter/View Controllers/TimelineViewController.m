@@ -8,8 +8,17 @@
 
 #import "TimelineViewController.h"
 #import "APIManager.h"
+#import "Tweet.h"
+#import "TweetCell.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
-@interface TimelineViewController ()
+
+@interface TimelineViewController ()<UITableViewDataSource, UITableViewDelegate> //composeViewTableDelegate?
+
+    @property (strong, nonatomic) NSMutableArray *tweets;
+    @property (weak, nonatomic) IBOutlet UITableView *tweetView;
+    @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -18,17 +27,53 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Get timeline
+// getting data from view controller
+    self.tweetView.dataSource = self;
+    self.tweetView.delegate = self;
+    self.tweetView.rowHeight = 120;
+    self.tweets = [[NSMutableArray alloc] init];
+    
+    [self fetchTweets];
+    
+    
+    // initialize UIRefreshControl
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    // bind action to refresh control
+    [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
+    [self.tweetView insertSubview:self.refreshControl atIndex:0];
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.tweets.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // gets cell
+    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
+    
+    //  this will help us link each individual tweet with corresponding cell
+    Tweet *tweet = self.tweets[indexPath.row];
+    [cell configureCell:tweet];
+    return cell;
+}
+
+// Makes a network request to get updated data and updates the tableView with the new data
+// In this function we begin to get data and set timeline
+- (void) fetchTweets {
+    // load timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            for (NSDictionary *dictionary in tweets) {
-                NSString *text = dictionary[@"text"];
-                NSLog(@"%@", text);
-            }
+            self.tweets = [[NSMutableArray alloc] initWithArray:tweets];
+            
+            [self.tweetView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+            [self.tweetView reloadData];
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 

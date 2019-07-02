@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 // TODO: Add properties, all public properties for the User go here
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *screenName;
+@property (strong, nonatomic) NSURL *profileURL;
 
 // TODO: Create initializer
 //we set up as a dictionary because that is how we import the information
