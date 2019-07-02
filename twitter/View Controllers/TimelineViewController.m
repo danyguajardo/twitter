@@ -10,16 +10,14 @@
 #import "APIManager.h"
 #import "Tweet.h"
 #import "TweetCell.h"
-#import "AppDelegate.h"
-#import "LoginViewController.h"
+//#import "AppDelegate.h"
+//#import "LoginViewController.h"
 
 
 @interface TimelineViewController ()<UITableViewDataSource, UITableViewDelegate> //composeViewTableDelegate?
-
     @property (strong, nonatomic) NSMutableArray *tweets;
     @property (weak, nonatomic) IBOutlet UITableView *tweetView;
     @property (nonatomic, strong) UIRefreshControl *refreshControl;
-
 @end
 
 @implementation TimelineViewController
@@ -31,7 +29,7 @@
     self.tweetView.dataSource = self;
     self.tweetView.delegate = self;
     self.tweetView.rowHeight = 120;
-    self.tweets = [[NSMutableArray alloc] init];
+    self.tweets = [[NSMutableArray alloc] init];  //initialize tweet arrays
     
     [self fetchTweets];
     
@@ -55,7 +53,7 @@
     
     //  this will help us link each individual tweet with corresponding cell
     Tweet *tweet = self.tweets[indexPath.row];
-    [cell configureCell:tweet];
+    [cell setUpCell:tweet];
     return cell;
 }
 

@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *favoriteLabel;
 @property (strong, nonatomic) Tweet *tweet;
 
--(void)configureCell: (Tweet *) tweet;
+-(void)setUpCell: (Tweet *) tweet;
 
 @end
 

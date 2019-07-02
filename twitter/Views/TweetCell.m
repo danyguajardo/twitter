@@ -21,10 +21,10 @@
     // Configure the view for the selected state
 }
 
--(void)configureCell: (Tweet *)tweet {
+-(void)setUpCell: (Tweet *)tweet {
     self.tweet = tweet;
     self.name.text = tweet.user.name;
-    self.name.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
+    self.username.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
     self.date.text = tweet.createdAtString;
     self.tweetContent.text = self.tweet.text;
     
