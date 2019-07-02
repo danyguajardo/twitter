@@ -28,7 +28,7 @@
 // getting data from view controller
     self.tweetView.dataSource = self;
     self.tweetView.delegate = self;
-    self.tweetView.rowHeight = 120;
+    self.tweetView.rowHeight = 180;
     self.tweets = [[NSMutableArray alloc] init];  //initialize tweet arrays
     
     [self fetchTweets];

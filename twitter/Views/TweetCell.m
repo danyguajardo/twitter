@@ -27,12 +27,12 @@
     self.username.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
     self.date.text = tweet.createdAtString;
     self.tweetContent.text = self.tweet.text;
-    
+
     self.profileImage.image = nil;
     [self.profileImage setImageWithURL:tweet.user.profileURL];
     
-    self.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweeted];
-    self.favoriteLabel.text = [NSString stringWithFormat:@"%d", tweet.favorited];
+    self.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+    self.favoriteLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
 }
 
 @end
