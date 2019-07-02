@@ -10,11 +10,13 @@
 #import "APIManager.h"
 #import "Tweet.h"
 #import "TweetCell.h"
+#import "ComposeViewController.h"
+
 //#import "AppDelegate.h"
 //#import "LoginViewController.h"
 
 
-@interface TimelineViewController ()<UITableViewDataSource, UITableViewDelegate> //composeViewTableDelegate?
+@interface TimelineViewController ()<ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
     @property (strong, nonatomic) NSMutableArray *tweets;
     @property (weak, nonatomic) IBOutlet UITableView *tweetView;
     @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -28,7 +30,7 @@
 // getting data from view controller
     self.tweetView.dataSource = self;
     self.tweetView.delegate = self;
-    self.tweetView.rowHeight = 180;
+//    self.tweetView.rowHeight = 180;
     self.tweets = [[NSMutableArray alloc] init];  //initialize tweet arrays
     
     [self fetchTweets];
@@ -80,15 +82,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.delegate = self;
 }
-*/
+
 
 
 @end
