@@ -36,22 +36,26 @@
 }
 
 - (IBAction)didTapFavorite:(id)sender {
+    NSString *fav;
     self.tweet.favorited = !self.tweet.favorited;
     if(self.tweet.favorited){
         self.tweet.favoriteCount += 1;
+        fav = @"create";
     }
     else{
         self.tweet.favoriteCount -= 1;
+        fav = @"destroy";
+
     }
     
     [self refreshData];  //in order to refresh UI
     
-    [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+    [[APIManager shared] favorite:self.tweet do: fav completion:^(Tweet *tweet, NSError *error) {
         if(error){
-            NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+            NSLog(@"Error %@ tweet: %@", fav, error.localizedDescription);
         }
         else{
-            NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+            NSLog(@"Successfully %@ the following Tweet: %@", fav, tweet.text);
         }
     }];
     
