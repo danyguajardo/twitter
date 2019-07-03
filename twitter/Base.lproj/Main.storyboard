@@ -246,7 +246,7 @@
                         <viewLayoutGuide key="safeArea" id="FsL-Iw-w8Z"/>
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="uJn-Ts-ttx">
-                        <barButtonItem key="leftBarButtonItem" title="X" id="m3Z-LF-4CV" userLabel="close">
+                        <barButtonItem key="leftBarButtonItem" image="close-icon" id="m3Z-LF-4CV" userLabel="close">
                             <connections>
                                 <action selector="closeComposerAction:" destination="PxC-D9-5bL" id="2bs-yq-Rvn"/>
                             </connections>
@@ -258,6 +258,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tweetText" destination="zQg-Zt-Xyf" id="BxN-2v-ndp"/>
                         <outlet property="tweetView" destination="zQg-Zt-Xyf" id="Ihk-qb-Th1"/>
                     </connections>
                 </viewController>
@@ -286,6 +287,7 @@
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
+        <image name="close-icon" width="26" height="24"/>
         <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="message-icon" width="30" height="30"/>

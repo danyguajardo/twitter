@@ -12,6 +12,7 @@
 
 @interface ComposeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *tweetView;
+@property (weak, nonatomic) IBOutlet UITextView *tweetText;
 
 @end
 
@@ -26,12 +27,19 @@
 - (IBAction)closeComposerAction:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];}
 
+//- (IBAction)TweetClose:(id)sender {
+//    [self dismissViewControllerAnimated:true completion:nil];}
+//
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 - (IBAction)didTap:(id)sender {
-    [[APIManager shared]postStatusWithText:@"This is my tweet 😀" completion:^(Tweet *tweet, NSError *error) {
+    NSString *tweetTextBox = self.tweetText.text;
+    
+    [[APIManager shared]postStatusWithText:tweetTextBox completion:^(Tweet *tweet, NSError *error) {
         if(error){
             NSLog(@"Error composing Tweet: %@", error.localizedDescription);
         }
@@ -39,7 +47,19 @@
             [self.delegate didTweet:tweet];
             NSLog(@"Compose Tweet Success!");
         }
+        [self dismissViewControllerAnimated:true completion:nil];
+
     }];
+
+//    [[APIManager shared]postStatusWithText:@"This is my tweet 😀" completion:^(Tweet *tweet, NSError *error) {
+//        if(error){
+//            NSLog(@"Error composing Tweet: %@", error.localizedDescription);
+//        }
+//        else{
+//            [self.delegate didTweet:tweet];
+//            NSLog(@"Compose Tweet Success!");
+//        }
+//    }];
 }
 
 /*

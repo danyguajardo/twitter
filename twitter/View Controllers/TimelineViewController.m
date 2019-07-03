@@ -94,4 +94,8 @@
 
 
 
+- (void)didTweet:(nonnull Tweet *)tweet {
+    [self.tweetView reloadData];
+}
+
 @end
