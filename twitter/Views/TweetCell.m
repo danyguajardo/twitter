@@ -8,7 +8,7 @@
 
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
-
+#import "APIManager.h"
 @implementation TweetCell
 
 - (void)awakeFromNib {
@@ -36,20 +36,36 @@
 }
 
 - (IBAction)didTapFavorite:(id)sender {
-    // TODO: Update the local tweet model
-    self.tweet.favorited = YES;
-    self.tweet.favoriteCount += 1;
+    self.tweet.favorited = !self.tweet.favorited;
+    if(self.tweet.favorited){
+        self.tweet.favoriteCount += 1;
+    }
+    else{
+        self.tweet.favoriteCount -= 1;
+    }
     
-    [self refreshData];
-    // TODO: Update cell UI
+    [self refreshData];  //in order to refresh UI
     
-    // TODO: Send a POST request to the POST favorites/create endpoint
+    [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+        if(error){
+            NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+        }
+        else{
+            NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+        }
+    }];
+
 }
 - (IBAction)didTapRetweet:(id)sender {
-    self.tweet.retweeted = YES;
-    self.tweet.retweetCount += 1;
-    
-    [self refreshData];
+    self.tweet.retweeted = !self.tweet.retweeted;
+    if(self.tweet.retweeted){
+        self.tweet.retweetCount += 1;
+    }
+    else{
+        self.tweet.retweetCount -= 1;
+    }
+
+    [self refreshData]; //in order to refresh UI
 }
 
 - (void)refreshData {
@@ -57,9 +73,11 @@
     self.favoriteLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
     
     if (self.tweet.favorited){
+        NSLog (@"Favorited");
         [self.favoriteButton setSelected: YES];
     }
     else{
+        NSLog (@"Not Favorited");
         [self.favoriteButton setSelected: NO];
     }
 

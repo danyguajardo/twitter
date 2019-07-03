@@ -171,7 +171,7 @@
                                         <connections>
                                             <outlet property="date" destination="YVr-7Q-QDR" id="BNV-yX-D0R"/>
                                             <outlet property="directMessageImage" destination="h77-rn-97R" id="Jzd-eP-wfm"/>
-                                            <outlet property="favoriteButton" destination="bEt-ht-FCQ" id="usJ-wd-Jzc"/>
+                                            <outlet property="favoriteButton" destination="22e-Wi-bcm" id="BwK-Bx-xXM"/>
                                             <outlet property="favoriteLabel" destination="CDA-9p-TGw" id="Dsz-fe-gox"/>
                                             <outlet property="name" destination="UvU-5Z-egd" id="Pcj-QT-DQp"/>
                                             <outlet property="profileImage" destination="Ej0-hJ-dp6" id="kxg-Uk-Q9r"/>
