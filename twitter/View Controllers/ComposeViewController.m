@@ -48,19 +48,11 @@
             NSLog(@"Compose Tweet Success!");
         }
         [self dismissViewControllerAnimated:true completion:nil];
-
+        
     }];
-
-//    [[APIManager shared]postStatusWithText:@"This is my tweet 😀" completion:^(Tweet *tweet, NSError *error) {
-//        if(error){
-//            NSLog(@"Error composing Tweet: %@", error.localizedDescription);
-//        }
-//        else{
-//            [self.delegate didTweet:tweet];
-//            NSLog(@"Compose Tweet Success!");
-//        }
-//    }];
-}
+     
+     }
+     
 
 /*
 #pragma mark - Navigation

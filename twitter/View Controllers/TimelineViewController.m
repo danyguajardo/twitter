@@ -95,6 +95,7 @@
 
 
 - (void)didTweet:(nonnull Tweet *)tweet {
+    [self.tweets insertObject:tweet atIndex:0];
     [self.tweetView reloadData];
 }
 
