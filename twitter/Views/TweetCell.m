@@ -54,18 +54,31 @@
             NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
         }
     }];
+    
 
 }
 - (IBAction)didTapRetweet:(id)sender {
+    NSString *rt;
     self.tweet.retweeted = !self.tweet.retweeted;
     if(self.tweet.retweeted){
         self.tweet.retweetCount += 1;
+        rt = @"retweet";
     }
     else{
         self.tweet.retweetCount -= 1;
+        rt = @"unretweet";
     }
 
     [self refreshData]; //in order to refresh UI
+    
+    [[APIManager shared] retweet:self.tweet do: rt completion:^(Tweet *tweet, NSError *error) {
+        if(error){
+            NSLog(@"Error %@ tweet: %@", rt, error.localizedDescription);
+        }
+        else{
+            NSLog(@"Successfully %@ the following Tweet: %@", rt, tweet.text);
+        }
+    }];
 }
 
 - (void)refreshData {
