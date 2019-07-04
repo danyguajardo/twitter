@@ -13,6 +13,7 @@
 #import "ComposeViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "DetailsViewController.h"
 
 
 @interface TimelineViewController ()<ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -85,12 +86,27 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-    composeController.delegate = self;
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    UINavigationController *navigationController = [segue destinationViewController];
+//    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+//    composeController.delegate = self;
+//}
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //if segue is transitioning into the composeViewController
+    if ([[segue identifier] isEqualToString:@"composeSegue"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
+    //segue into details view
+    else{
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tweetView indexPathForCell:tappedCell];
+        DetailsViewController *details = [segue destinationViewController];
+        details.tweet = self.tweets[indexPath.row];
+    }
+}
 
 
 - (void)didTweet:(nonnull Tweet *)tweet {
