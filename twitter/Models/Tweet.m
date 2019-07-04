@@ -29,25 +29,52 @@
         self.retweetCount = [dictionary[@"retweet_count"] intValue];
         self.retweeted = [dictionary[@"retweeted"] boolValue];
         
+        
         // TODO: initialize user
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
-    
-        // TODO: Format and set createdAtString... this is to format the date to readable format
+        
+        // TODO: Format and set createdAtString
         NSString *createdAtOriginalString = dictionary[@"created_at"];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         // Configure the input format to parse the date string
-        formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-        // Convert String to Date
+        
+        //convert string to date
         NSDate *date = [formatter dateFromString:createdAtOriginalString];
+        
         // Configure output format
         formatter.dateStyle = NSDateFormatterShortStyle;
         formatter.timeStyle = NSDateFormatterNoStyle;
-        // Convert Date to String
-        self.createdAtString = [formatter stringFromDate:date];
+        
+        // Here I will begin to convert time tweeted to time ago relative to now
+        [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+        [formatter setDateFormat:@"E MMM d HH:mm:ss Z y"];
+        NSDate *newDate = [formatter dateFromString:createdAtOriginalString];
+        NSDate *today = [NSDate date];
+        double time = [newDate timeIntervalSinceDate:today];
+        time *= -1;
+        
+        if (time < 60) {
+            int diff = time;
+            self.createdAtString = [NSString stringWithFormat:@"%ds", diff];
+        } else if (time < 3600) {
+            int diff = round(time / 60);
+            self.createdAtString = [NSString stringWithFormat:@"%dm", diff];
+        } else if (time < 86400) {
+            int diff = round(time / 60 / 60);
+            self.createdAtString = [NSString stringWithFormat:@"%dh", diff];
+        } else if (time < 2629743) {
+            int diff = round(time / 60 / 60 / 24);
+            self.createdAtString = [NSString stringWithFormat:@"%dd", diff];
+        } else {
+            self.createdAtString = [formatter stringFromDate:date];
+        }
     }
+    // convertion ends
     return self;
+    
 }
+
 
 // this returns an array of tweet dictionaries,
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries{
