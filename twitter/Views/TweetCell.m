@@ -31,8 +31,7 @@
     self.profileImage.image = nil;
     [self.profileImage setImageWithURL:tweet.user.profileURL];
     
-    self.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
-    self.favoriteLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    [self refreshData];
 }
 
 - (IBAction)didTapFavorite:(id)sender {

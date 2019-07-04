@@ -18,18 +18,8 @@
 
 @implementation ComposeViewController
 
-//- (IBAction)tweetAction:(id)sender {
-//    [[APIManager shared] postStatusWithText:(self.tweetView.text) completion:^(Tweet * tweets, NSError * error) {
-//        if (tweets)
-//            [self dismissViewControllerAnimated:true completion:nil];
-//    }];
-//}
 - (IBAction)closeComposerAction:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];}
-
-//- (IBAction)TweetClose:(id)sender {
-//    [self dismissViewControllerAnimated:true completion:nil];}
-//
 
 
 - (void)viewDidLoad {
