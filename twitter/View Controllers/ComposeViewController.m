@@ -56,7 +56,7 @@
     NSString *newText = [self.tweetText.text stringByReplacingCharactersInRange:range withString:text];
     
     // TODO: Update Character Count Label
-    self.characterCount.text = [NSString stringWithFormat:@"%lu", newText.length];
+    self.characterCount.text = [[NSString stringWithFormat:@"%lu", newText.length] stringByAppendingString:@"/140"];
     
     
     // The new text should be allowed? True/False

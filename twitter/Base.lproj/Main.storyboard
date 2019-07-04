@@ -243,22 +243,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text=" " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zQg-Zt-Xyf" userLabel="tweetView">
-                                <rect key="frame" x="0.0" y="78" width="375" height="296"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text=" " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zQg-Zt-Xyf" userLabel="tweetView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="310"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="310" id="YT4-1Y-xpS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sv-lK-Odw" userLabel="characterCount">
-                                <rect key="frame" x="317" y="309" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sv-lK-Odw" userLabel="characterCount">
+                                <rect key="frame" x="16" y="264" width="343" height="27.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zQg-Zt-Xyf" firstAttribute="trailing" secondItem="FsL-Iw-w8Z" secondAttribute="trailing" id="8ar-Ek-Ewj"/>
+                            <constraint firstItem="6sv-lK-Odw" firstAttribute="top" secondItem="FsL-Iw-w8Z" secondAttribute="top" constant="200" id="MGt-5c-WXv"/>
+                            <constraint firstItem="FsL-Iw-w8Z" firstAttribute="trailing" secondItem="6sv-lK-Odw" secondAttribute="trailing" constant="16" id="Rpc-Cp-xRE"/>
+                            <constraint firstItem="zQg-Zt-Xyf" firstAttribute="leading" secondItem="FsL-Iw-w8Z" secondAttribute="leading" id="olQ-cG-Vj1"/>
+                            <constraint firstItem="6sv-lK-Odw" firstAttribute="leading" secondItem="FsL-Iw-w8Z" secondAttribute="leading" constant="16" id="sEc-UF-yaw"/>
+                            <constraint firstItem="zQg-Zt-Xyf" firstAttribute="top" secondItem="FsL-Iw-w8Z" secondAttribute="top" id="zgL-c2-Rp9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="FsL-Iw-w8Z"/>
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="uJn-Ts-ttx">
@@ -281,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgp-PW-i5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3492" y="36"/>
+            <point key="canvasLocation" x="3492" y="35.532233883058474"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VxU-3C-eDC">
