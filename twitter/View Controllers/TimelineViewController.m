@@ -92,6 +92,7 @@
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
     }
+    
     //segue into details view
     else{
         UITableViewCell *tappedCell = sender;
