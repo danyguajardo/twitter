@@ -94,7 +94,7 @@
     }
     
     //segue into details view
-    else{
+    else if ([[segue identifier] isEqualToString:@"details"]){
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tweetView indexPathForCell:tappedCell];
         DetailsViewController *details = [segue destinationViewController];
