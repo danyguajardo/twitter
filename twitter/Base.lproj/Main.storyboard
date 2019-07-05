@@ -13,6 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="uh1-EZ-BZD">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hKJ-HH-8tn" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="LoginViewController" id="c3O-zL-0ZQ" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1iA-jg-j9U"/>
@@ -31,7 +32,7 @@
                                 <state key="normal" title="Login with Twitter"/>
                                 <connections>
                                     <action selector="didTapLogin:" destination="c3O-zL-0ZQ" eventType="touchUpInside" id="fgh-gR-NhB"/>
-                                    <segue destination="BSj-A8-ASV" kind="presentation" identifier="loginSegue" id="puC-xG-sua"/>
+                                    <segue destination="jZU-d2-j9Q" kind="presentation" identifier="loginSegue" id="iLW-Mg-fmL"/>
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="TwitterLogoBlue" translatesAutoresizingMaskIntoConstraints="NO" id="KMY-gb-DAH">
@@ -49,9 +50,8 @@
                         <viewLayoutGuide key="safeArea" id="osx-NC-afp"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hKJ-HH-8tn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3510" y="36"/>
+            <point key="canvasLocation" x="-1156" y="36"/>
         </scene>
         <!--Home Timeline-->
         <scene sceneID="1Tv-nE-1AW">
@@ -66,7 +66,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6q9-9g-rFI" userLabel="Tweet View">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="201" id="gFO-7b-WFH" userLabel="TweetCell" customClass="TweetCell">
@@ -215,10 +215,11 @@
             </objects>
             <point key="canvasLocation" x="1660" y="36.431784107946029"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Home-->
         <scene sceneID="WUT-Ke-VeR">
             <objects>
                 <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="FTQ-G1-N2b" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="home-icon" id="gN7-cd-KzJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ytz-Ev-cUB">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -226,12 +227,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Lbl-k5-U4i" kind="relationship" relationship="rootViewController" id="1DH-bv-mXM"/>
+                        <segue destination="Lbl-k5-U4i" kind="relationship" relationship="rootViewController" id="BLI-pN-UIz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JHS-35-jFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="860" y="36.431784107946029"/>
+            <point key="canvasLocation" x="666" y="36"/>
         </scene>
         <!--Compose View Controller-->
         <scene sceneID="5sA-nJ-jet">
@@ -307,6 +308,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPs-AR-idi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2578" y="37"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="oJy-8l-hsQ">
+            <objects>
+                <viewController id="7ji-lK-8d0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rUn-vv-44u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="PROFILE GOES HERE" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bqb-77-I1T">
+                                <rect key="frame" x="61" y="126" width="158" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="LTI-JN-3ao"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile-Icon" id="Uj6-TD-UFM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jha-hd-PCk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204" y="820"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="pjI-91-vlH">
@@ -436,52 +462,23 @@
             </objects>
             <point key="canvasLocation" x="1660" y="819.94002998500753"/>
         </scene>
-        <!--Profile-->
-        <scene sceneID="xzb-I9-cDb">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wSA-aQ-Iyg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="THC-Jc-j1W" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="c5e-Qs-oMV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="QPQ-Bi-Ibf"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile-Icon" id="NzE-lS-NxR"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="-786" y="1675"/>
-        </scene>
-        <!--Home-->
-        <scene sceneID="fti-JA-eiN">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5FT-Lc-Cv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="tRp-HM-HAe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home-icon" id="mc7-IS-ICL"/>
-                    <connections>
-                        <segue destination="FTQ-G1-N2b" kind="show" id="Yzx-Rd-HTb"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="-786" y="1010"/>
-        </scene>
         <!--Tab Bar Controller-->
-        <scene sceneID="qoq-3i-WQm">
+        <scene sceneID="2vS-kY-fhz">
             <objects>
-                <tabBarController id="BSj-A8-ASV" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QBL-PK-geL">
+                <tabBarController storyboardIdentifier="tabBarController" id="jZU-d2-j9Q" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sTi-Iz-CLb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="tRp-HM-HAe" kind="relationship" relationship="viewControllers" id="XWs-bg-xIN"/>
-                        <segue destination="THC-Jc-j1W" kind="relationship" relationship="viewControllers" id="w8Z-Kd-fvh"/>
+                        <segue destination="FTQ-G1-N2b" kind="relationship" relationship="viewControllers" id="8ij-zN-SSK"/>
+                        <segue destination="7ji-lK-8d0" kind="relationship" relationship="viewControllers" id="qqx-iR-FAK"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MyL-50-Qiw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B5x-Cc-MpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1738" y="1343"/>
+            <point key="canvasLocation" x="-204" y="36"/>
         </scene>
     </scenes>
     <resources>
