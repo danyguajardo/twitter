@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13178D2822CFFA3E00DA38F6 /* profileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13178D2722CFFA3E00DA38F6 /* profileViewController.m */; };
 		13433D7222CD9C3800408E88 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13433D7122CD9C3800408E88 /* DetailsViewController.m */; };
 		135CA16322CAC9E700E94347 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 135CA16222CAC9E700E94347 /* User.m */; };
 		135CA16622CACAF100E94347 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 135CA16522CACAF100E94347 /* Tweet.m */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13178D2622CFFA3E00DA38F6 /* profileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = profileViewController.h; sourceTree = "<group>"; };
+		13178D2722CFFA3E00DA38F6 /* profileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = profileViewController.m; sourceTree = "<group>"; };
 		13433D7022CD9C3800408E88 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		13433D7122CD9C3800408E88 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		135CA16122CAC9E700E94347 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 				135CA16B22CBE1B200E94347 /* ComposeViewController.m */,
 				13433D7022CD9C3800408E88 /* DetailsViewController.h */,
 				13433D7122CD9C3800408E88 /* DetailsViewController.m */,
+				13178D2622CFFA3E00DA38F6 /* profileViewController.h */,
+				13178D2722CFFA3E00DA38F6 /* profileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 			files = (
 				135CA16922CAE0C200E94347 /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
+				13178D2822CFFA3E00DA38F6 /* profileViewController.m in Sources */,
 				13433D7222CD9C3800408E88 /* DetailsViewController.m in Sources */,
 				135CA16322CAC9E700E94347 /* User.m in Sources */,
 				135CA16C22CBE1B200E94347 /* ComposeViewController.m in Sources */,

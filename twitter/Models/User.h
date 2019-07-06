@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *screenName;
 @property (strong, nonatomic) NSURL *profileURL;
+@property (strong, nonatomic) NSNumber * friends;
+@property (strong, nonatomic) NSNumber * followers;
 
 // TODO: Create initializer
 //we set up as a dictionary because that is how we import the information

@@ -6,8 +6,8 @@
 //  Copyright © 2018 Emerson Malca. All rights reserved.
 //
 
-#import "Tweet.h"
 #import "APIManager.h"
+#import "Tweet.h"
 
 static NSString * const baseURLString = @"https://api.twitter.com";
 static NSString * const consumerKey = @"5lUJuO5AUpPUCez4ewYDFrtgh";  //these are the keys needed to use the API
@@ -97,6 +97,80 @@ static NSString * const consumerSecret = @"s5ynGqXzstUZwFPxVyMDkYh197qvHOcVM3kwv
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, error);
     }];
+}
+
+-(void) getTweetsUser: (NSString * ) username completion:(void(^)(NSArray *tweets, NSError *error))completion{
+    NSDictionary *parameters = @{@"screen_name": username};
+    [self GET:@"1.1/statuses/user_timeline.json" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+       
+       NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
+       completion(tweets, nil);
+       
+   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+       
+       completion(nil, error);
+   }];
+}
+
+-(void) getUser: (void(^)(NSDictionary *infoUser, NSError *error))completion
+{
+    
+    
+    
+    [self GET:@"1.1/account/settings.json"
+   parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+       
+       
+       
+       completion(tweetDictionaries, nil);
+       
+   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+       
+       completion(nil, error);
+   }];
+}
+
+
+- (void)getUsernameWithCompletion:(void(^)(NSString *username, NSError *error))completion {
+    
+    // Create a GET Request
+    [self GET:@"1.1/account/settings.json" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable userDictionary) {
+       // Success
+       NSString *username = userDictionary[@"screen_name"];
+       completion(username, nil);
+       
+   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+       // There was a problem
+       completion(nil, error);
+       
+   }];
+    
+}
+
+
+
+- (void)getUserTimelineWithUsername:(NSString*)username withCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
+    
+    // Create a GET Request
+    
+    NSString *request = [NSString stringWithFormat:@"1.1/statuses/user_timeline.json?screen_name=%@", username];
+    NSDictionary *parameters = @{@"screen_name": username};
+    
+    
+    
+    [self GET:request parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+       // Success
+       NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
+       completion(tweets, nil);
+       
+   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+       
+       // There was a problem
+       
+       completion(nil, error);
+       
+   }];
+    
 }
 
 
