@@ -52,8 +52,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
-
+Using and understanding how to export information from the API and into my app.
 ## Credits
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
